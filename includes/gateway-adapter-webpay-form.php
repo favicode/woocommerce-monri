@@ -1,6 +1,10 @@
 <?php
 
+require_once __DIR__ . '/trait-elementor-purchase-summary.php';
+
 class Monri_WC_Gateway_Adapter_Webpay_Form {
+
+	use Monri_WC_Elementor_Purchase_Summary;
 
 	/**
 	 * Adapter ID
@@ -32,6 +36,7 @@ class Monri_WC_Gateway_Adapter_Webpay_Form {
 		add_action( 'woocommerce_before_thankyou', [ $this, 'process_return' ] );
 		add_action( 'woocommerce_order_status_changed', [ $this, 'process_capture' ], null, 4 );
 		add_action( 'woocommerce_order_status_changed', [ $this, 'process_void' ], null, 4 );
+		$this->register_elementor_purchase_summary_hook();
 
 		// load installments fee logic if installments enabled
 		if ( $this->payment->get_option( 'paying_in_installments' ) ) {

@@ -1,6 +1,10 @@
 <?php
 
+require_once __DIR__ . '/trait-elementor-purchase-summary.php';
+
 class Monri_WC_Gateway_Adapter_Wspay {
+
+	use Monri_WC_Elementor_Purchase_Summary;
 
 	/**
 	 * Adapter ID
@@ -72,6 +76,7 @@ class Monri_WC_Gateway_Adapter_Wspay {
 		}
 
 		add_action( 'woocommerce_before_thankyou', [ $this, 'process_return' ] );
+		$this->register_elementor_purchase_summary_hook();
 		add_action( 'woocommerce_thankyou_monri', [ $this, 'thankyou_page' ] );
 		add_action( 'woocommerce_order_status_changed', [ $this, 'process_capture' ], null, 3 );
 		add_action( 'woocommerce_order_status_changed', [ $this, 'process_void' ], null, 3 );
