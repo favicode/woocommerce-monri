@@ -30,7 +30,7 @@ class Monri_WC_Payment_Token_Webpay extends WC_Payment_Token {
 	public function get_display_name( $deprecated = '' ) {
 		$display = sprintf(
 		/* translators: 1: credit card type 2: last 4 digits  */
-			__( '%1$s ending in %2$s ', 'woocommerce' ),
+			__( '%1$s ending in %2$s ', 'monri' ),
 			wc_get_credit_card_type_label( $this->get_card_type() ),
 			$this->get_last4(),
 		);

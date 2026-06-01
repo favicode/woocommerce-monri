@@ -509,7 +509,7 @@ class Monri_WC_Gateway_Adapter_Webpay_Components {
 		}
 
 		if ( !empty( $data['woocommerce_checkout_update_totals'] ) && empty( $data['terms'] ) && ! empty( $data['terms-field'] ) ) {
-			$errors->add( 'terms', __( 'Please read and accept the terms and conditions to proceed with your order.', 'woocommerce' ) );
+			$errors->add( 'terms', __( 'Please read and accept the terms and conditions to proceed with your order.', 'monri' ) );
 		}
 	}
 	/**
