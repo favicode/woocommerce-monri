@@ -9,6 +9,7 @@ License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 WC requires at least: 4.3.0
 WC tested up to: 10.8.1
+Text Domain: monri
 */
 if ( ! defined( 'ABSPATH' ) ) exit;
 
@@ -89,13 +90,6 @@ function monri_wc_action_links( $links ) {
 	return $links;
 }
 add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'monri_wc_action_links' );
-
-
-function monri_load_language() {
-	load_plugin_textdomain( 'monri', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-}
-add_action( 'plugins_loaded', 'monri_load_language' );
-
 
 // Registers Blocks integration.
 function monri_wc_block_support() {
