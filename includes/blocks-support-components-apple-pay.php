@@ -36,7 +36,13 @@ final class Monri_WC_Components_Apple_Pay_Blocks_Support extends AbstractPayment
 				$script_url = $this->get_setting( 'test_mode' ) ?
 					Monri_WC_Gateway_Webpay_Components_Abstract::SCRIPT_ENDPOINT_TEST :
 					Monri_WC_Gateway_Webpay_Components_Abstract::SCRIPT_ENDPOINT;
-				wp_enqueue_script( 'monri-components-apple-pay', $script_url, array(), MONRI_WC_VERSION );
+				wp_enqueue_script(
+					'monri-components-apple-pay',
+					$script_url,
+					array(),
+					MONRI_WC_VERSION,
+					false
+				);
 			}
 		);
 	}

@@ -36,7 +36,13 @@ class Monri_WC_Gateway_Webpay_Components_Apple_Pay extends Monri_WC_Gateway_Webp
 			function () {
 				if ( is_checkout() ) {
 					$script_url = $this->get_option_bool( 'test_mode' ) ? self::SCRIPT_ENDPOINT_TEST : self::SCRIPT_ENDPOINT;
-					wp_enqueue_script( 'monri-components-apple-pay', $script_url, array(), MONRI_WC_VERSION );
+					wp_enqueue_script(
+						'monri-components-apple-pay',
+						$script_url,
+						array(),
+						MONRI_WC_VERSION,
+						false
+					);
 				}
 			}
 		);

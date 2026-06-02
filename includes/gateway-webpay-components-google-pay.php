@@ -35,8 +35,16 @@ class Monri_WC_Gateway_Webpay_Components_Google_Pay extends Monri_WC_Gateway_Web
 			'template_redirect',
 			function () {
 				if ( is_checkout() ) {
-					$script_url = $this->get_option_bool( 'test_mode' ) ? self::SCRIPT_ENDPOINT_TEST : self::SCRIPT_ENDPOINT;
-					wp_enqueue_script( 'monri-components-google-pay', $script_url, array(), MONRI_WC_VERSION );
+					$script_url = $this->get_option_bool( 'test_mode' )
+						? self::SCRIPT_ENDPOINT_TEST
+						: self::SCRIPT_ENDPOINT;
+					wp_enqueue_script(
+						'monri-components-google-pay',
+						$script_url,
+						array(),
+						MONRI_WC_VERSION,
+						false
+					);
 				}
 			}
 		);

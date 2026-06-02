@@ -155,7 +155,7 @@ class Monri_WC_Gateway extends WC_Payment_Gateway {
 		parent::admin_options();
 
 		$path = plugins_url( 'assets/js/field-dependency.js', MONRI_WC_PLUGIN_INDEX );
-		wp_enqueue_script( 'monri-admin', $path, [], MONRI_WC_VERSION );
+		wp_enqueue_script( 'monri-admin', $path, [], MONRI_WC_VERSION, false );
 	}
 
 	/**
