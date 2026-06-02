@@ -21,7 +21,7 @@ const filesToCopy = [
     'Monri_woocommerce_postavke.pdf',
     'Monri_woocommerce_postavke_wspay.pdf',
     'readme.txt',
-    'version.php',
+    'version.txt',
     'index.php',
 ];
 

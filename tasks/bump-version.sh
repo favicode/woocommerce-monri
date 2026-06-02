@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 BASEDIR=$(dirname $(dirname "$0"))
-VERSION=$(cat version.php)
+VERSION=$(cat version.txt)
 
 sed -i "s/Version: .*/Version: $VERSION/" "$BASEDIR/monri.php"
 sed -i "s/define( 'MONRI_WC_VERSION', '.*' );/define( 'MONRI_WC_VERSION', '$VERSION' );/" "$BASEDIR/monri.php"
