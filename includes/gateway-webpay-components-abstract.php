@@ -1,6 +1,10 @@
 <?php
 
+require_once __DIR__ . '/trait-purchase-summary.php';
+
 abstract class Monri_WC_Gateway_Webpay_Components_Abstract extends WC_Payment_Gateway {
+
+	use Monri_WC_Purchase_Summary;
 	public const AUTHORIZATION_ENDPOINT_TEST = 'https://ipgtest.monri.com/v2/payment/new';
 	public const AUTHORIZATION_ENDPOINT      = 'https://ipg.monri.com/v2/payment/new';
 	public const SCRIPT_ENDPOINT_TEST        = 'https://ipgtest.monri.com/dist/components.js';
