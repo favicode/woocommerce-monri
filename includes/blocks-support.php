@@ -37,7 +37,7 @@ final class Monri_WC_Blocks_Support extends AbstractPaymentMethodType {
 				$script_url = $this->get_setting( 'test_mode' ) ?
 					Monri_WC_Gateway_Adapter_Webpay_Components::SCRIPT_ENDPOINT_TEST :
 					Monri_WC_Gateway_Adapter_Webpay_Components::SCRIPT_ENDPOINT;
-				wp_enqueue_script( 'monri-components', $script_url, array(), MONRI_WC_VERSION );
+				wp_enqueue_script( 'monri-components', $script_url, array(), MONRI_WC_VERSION, false );
 			});
 		}
 	}

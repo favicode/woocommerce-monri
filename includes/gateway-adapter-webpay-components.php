@@ -40,7 +40,7 @@ class Monri_WC_Gateway_Adapter_Webpay_Components {
 		add_action( 'template_redirect', function () {
 			if ( is_checkout() ) {
 				$script_url = $this->payment->get_option_bool( 'test_mode' ) ? self::SCRIPT_ENDPOINT_TEST : self::SCRIPT_ENDPOINT;
-				wp_enqueue_script( 'monri-components', $script_url, [], MONRI_WC_VERSION );
+				wp_enqueue_script( 'monri-components', $script_url, [], MONRI_WC_VERSION, false );
 			}
 		} );
 
