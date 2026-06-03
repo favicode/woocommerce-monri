@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__ . '/gateway-adapter-wspay.php';
-
 class Monri_WC_Gateway_Adapter_Wspay_Iframe extends Monri_WC_Gateway_Adapter_Wspay {
 
 	/**

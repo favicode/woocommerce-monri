@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__ . '/gateway-adapter-webpay-form.php';
-
 class Monri_WC_Gateway_Adapter_Webpay_Lightbox extends Monri_WC_Gateway_Adapter_Webpay_Form {
 
 	/**

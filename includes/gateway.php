@@ -30,9 +30,10 @@ class Monri_WC_Gateway extends WC_Payment_Gateway {
 			$this->get_option( 'monri_payment_gateway_service' ) === 'monri-ws-pay' &&
 			$this->get_option( 'monri_ws_pay_integration_type' ) === 'iframe'
 		) {
-				require_once __DIR__ . '/gateway-adapter-wspay-iframe.php';
-				require_once __DIR__ . '/monri-wspay-api.php';
-				$this->adapter = new Monri_WC_Gateway_Adapter_Wspay_Iframe();
+			require_once __DIR__ . '/gateway-adapter-wspay.php';
+			require_once __DIR__ . '/gateway-adapter-wspay-iframe.php';
+			require_once __DIR__ . '/monri-wspay-api.php';
+			$this->adapter = new Monri_WC_Gateway_Adapter_Wspay_Iframe();
 		} elseif (
 			$this->get_option( 'monri_payment_gateway_service' ) === 'monri-web-pay' &&
 			$this->get_option( 'monri_web_pay_integration_type' ) === 'components'
@@ -44,6 +45,7 @@ class Monri_WC_Gateway extends WC_Payment_Gateway {
 			$this->get_option( 'monri_payment_gateway_service' ) === 'monri-web-pay' &&
 			$this->get_option( 'monri_web_pay_integration_type' ) === 'lightbox'
 		) {
+			require_once __DIR__ . '/gateway-adapter-webpay-form.php';
 			require_once __DIR__ . '/gateway-adapter-webpay-lightbox.php';
 			require_once __DIR__ . '/monri-api.php';
 			$this->adapter = new Monri_WC_Gateway_Adapter_Webpay_Lightbox();
