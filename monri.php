@@ -30,7 +30,7 @@ function monri_wc_init() {
 	require_once __DIR__ . '/includes/gateway.php';
 	require_once __DIR__ . '/includes/gateway-webpay-components-abstract.php';
 
-	function woocommerce_add_monri_gateway( $methods ) {
+	function monri_wc_add_monri_gateway( $methods ) {
 		$methods[] = Monri_WC_Gateway::class;
 
 		//temporary solution. Hide alternative payment methods settings in admin until the method is fully independent from components.
@@ -59,7 +59,7 @@ function monri_wc_init() {
 		return $methods;
 	}
 
-	add_filter( 'woocommerce_payment_gateways', 'woocommerce_add_monri_gateway' );
+	add_filter( 'woocommerce_payment_gateways', 'monri_wc_add_monri_gateway' );
 }
 add_action( 'plugins_loaded', 'monri_wc_init', 0 );
 
