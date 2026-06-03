@@ -5,22 +5,22 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 /** @var array $config */
 /** @var array $installments */
 
-$installments_price_increase = false;
+$monri_wc_installments_price_increase = false;
 ?>
 
 <?php if ($installments): ?>
 <div id="monri-installments" class="monri-installments">
 	<label for="monri-card-installments"><?php esc_html_e('Number of installments: ', 'monri') ?></label>
 	<select id="monri-card-installments" name="monri-card-installments" class="input-text">
-		<?php foreach ($installments as $installment): ?>
-			<option value="<?php echo esc_attr( $installment['value'] ) ?>"
-					<?php if ($installment['selected']): ?>selected<?php endif ?>
-			><?php echo esc_html($installment['label']) ?></option>
-			<?php $installments_price_increase = $installments_price_increase || ($installment['price_increase'] !== 0); ?>
+		<?php foreach ($installments as $monri_wc_installment): ?>
+			<option value="<?php echo esc_attr( $monri_wc_installment['value'] ) ?>"
+					<?php if ($monri_wc_installment['selected']): ?>selected<?php endif ?>
+			><?php echo esc_html($monri_wc_installment['label']) ?></option>
+			<?php $monri_wc_installments_price_increase = $monri_wc_installments_price_increase || ( $monri_wc_installment['price_increase'] !== 0); ?>
 		<?php endforeach; ?>
 	</select>
 
-	<?php if ($installments_price_increase): ?>
+	<?php if ($monri_wc_installments_price_increase): ?>
 	<p>
 		<?php esc_html_e('Fees may be applied for installments','monri') ?>
 	</p>
@@ -29,7 +29,7 @@ $installments_price_increase = false;
 </div>
 <?php endif; ?>
 
-<?php if ($installments_price_increase): /* installments are changing total */ ?>
+<?php if ($monri_wc_installments_price_increase): /* installments are changing total */ ?>
 <script type="text/javascript">
     (function ($) {
         var previousPaymentMethod;
