@@ -1,9 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/woocommerce-"
-"monri\n"
-"POT-Creation-Date: 2024-02-22T10:41:28+01:00\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/monri\n"
+"POT-Creation-Date: 2026-06-03T08:25:23+00:00\n"
 "PO-Revision-Date: 2024-02-22 10:57+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -15,33 +14,15 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 
 #. Plugin Name of the plugin
-#: monri.php includes/gateway.php:11 includes/gateway.php:17
-#: includes/gateway.php:133 includes/settings.php:90
-#: assets/js/blocks/index.js:3
-msgid "Monri"
-msgstr "Monri"
-
-#: blocks/integration/web-pay/components.js:50
-msgid "Transaction declined, please reload the page."
-msgstr "Transakcija odbijena, molimo Vas da osvježite stranicu."
-
-#: blocks/integration/installments.js:42
-msgid "An additional installments fee has been applied"
-msgstr "Primijenjena je naknada za dodatne rate"
-
-#: blocks/integration/installments.js:52
-msgid "No installments"
-msgstr "Bez rata"
-
-#. Plugin URI of the plugin
-#. Author URI of the plugin
 #: monri.php
-msgid "http://www.monri.com"
-msgstr "http://www.monri.com"
+#, fuzzy
+msgid "Monri Payments"
+msgstr "Monri Payments d.o.o."
 
 #. Description of the plugin
 #: monri.php
-msgid "Monri - Payment gateway for WooCommerce"
+#, fuzzy
+msgid "Official Monri Payments gateway for WooCommerce"
 msgstr "Monri - Payment gateway for WooCommerce"
 
 #. Author of the plugin
@@ -49,361 +30,575 @@ msgstr "Monri - Payment gateway for WooCommerce"
 msgid "Monri Payments d.o.o."
 msgstr "Monri Payments d.o.o."
 
-#: includes/gateway-adapter-webpay-components.php:80
-#: includes/gateway-adapter-webpay-components.php:277
-msgid "Monri payment completed."
-msgstr "Monri plaćanje uspješno."
+#. Author URI of the plugin
+#: monri.php
+#, fuzzy
+msgid "https://monri.com"
+msgstr "http://www.monri.com"
 
-#: includes/gateway-adapter-webpay-components.php:122
+#: includes/callback.php:108 includes/callback.php:175
+#: includes/gateway-adapter-webpay-components.php:174
+#: includes/gateway-adapter-webpay-form.php:333
+#: includes/gateway-adapter-webpay-lightbox.php:241
+#: includes/gateway-adapter-wspay.php:306
+msgid "Order awaiting payment"
+msgstr ""
+
+#: includes/gateway-adapter-webpay-components.php:93
+msgid "Initialization error occurred."
+msgstr ""
+
+#: includes/gateway-adapter-webpay-components.php:152
+msgid "Missing Monri transaction."
+msgstr ""
+
+#. translators: %s: generated id which represents order number
+#: includes/gateway-adapter-webpay-components.php:183
+#, php-format
 msgid "Order number in Monri administration: %s"
 msgstr "Broj narudžbe u Monri administraciji: %s"
 
-#: includes/gateway-adapter-webpay-components.php:165
-#: includes/gateway-adapter-webpay-components.php:303
-msgid "Transaction failed."
-msgstr "Transakcija neuspješna."
-
-#: includes/gateway-adapter-webpay-components.php:170
-msgid "Token is not provided"
-msgstr "Token nije dostupan"
-
-#: includes/gateway-adapter-webpay-components.php:281
-msgid "Monri - Order amount: "
-msgstr "Monri - Iznos narudžbe: "
-
-#: includes/gateway-adapter-webpay-components.php:284
-#: blocks/integration/installments.js:92
-msgid "Number of installments: "
-msgstr "Broj rata: "
-
-#: includes/gateway-adapter-webpay-form.php:58
-msgid "First name must have between 3 and 11 characters"
-msgstr "Ime mora imati između 3 i 11 znakova"
-
-#: includes/gateway-adapter-webpay-form.php:61
-msgid "Last name must have between 3 and 28 characters"
-msgstr "Prezime mora imati između 3 i 28 znakova"
-
-#: includes/gateway-adapter-webpay-form.php:64
-msgid "Address must have between 3 and 300 characters"
-msgstr "Adresa mora imati između 3 i 300 znakova"
-
-#: includes/gateway-adapter-webpay-form.php:67
-msgid "City must have between 3 and 30 characters"
-msgstr "Grad mora imati između 3 i 30 znakova"
-
-#: includes/gateway-adapter-webpay-form.php:70
-msgid "ZIP must have between 3 and 30 characters"
-msgstr "Poštanski broj mora imati između 3 i 30 znakova"
-
-#: includes/gateway-adapter-webpay-form.php:73
-msgid "Phone must have between 3 and 30 characters"
-msgstr "Telefon mora imati između 3 i 30 znamenki"
-
-#: includes/gateway-adapter-webpay-form.php:76
-msgid "Email must have between 3 and 30 characters"
-msgstr "Email mora imati između 3 i 30 znakova"
-
-#: includes/gateway-adapter-webpay-form.php:225
-#: includes/gateway-adapter-wspay.php:261
-msgid "Monri payment successful<br/>Approval code: "
-msgstr "Monri plaćanje uspješno <br/>Approval code: "
-
-#: includes/gateway-adapter-webpay-form.php:226
-#: includes/gateway-adapter-wspay.php:247
-#: includes/gateway-adapter-wspay.php:257
-msgid ""
-"Thank you for shopping with us. Your account has been charged and your "
-"transaction is successful. We will be shipping your order to you soon."
+#: includes/gateway-adapter-webpay-components.php:324
+#: includes/gateway-adapter-webpay-components.php:334
+#: includes/gateway-adapter-webpay-form.php:393
+#: includes/gateway-adapter-webpay-form.php:404
+#: includes/gateway-adapter-wspay.php:487
+#: includes/gateway-adapter-wspay.php:494
+#: includes/gateway-webpay-components-abstract.php:217
+#: includes/gateway-webpay-components-abstract.php:227
+msgid "There was an error submitting the refund to Monri."
 msgstr ""
-"Hvala što ste kupovali kod nas. Vaš račun je naplaćen i transakcija je "
-"uspješna. Uskoro ćemo vam poslati vašu narudžbu."
 
-#: includes/gateway-adapter-webpay-form.php:237
-msgid "Monri payment status is pending<br/>Approval code: "
-msgstr "Monri plaćanje na čekanju<br/>Approval code: "
-
-#: includes/gateway-adapter-webpay-form.php:238
-msgid ""
-"Thank you for shopping with us. Right now your payment status is pending, We "
-"will keep you posted regarding the status of your order through e-mail"
+#. translators: %s: amount which was successfully refunded
+#: includes/gateway-adapter-webpay-components.php:343
+#: includes/gateway-adapter-webpay-form.php:413
+#: includes/gateway-adapter-wspay.php:505
+#: includes/gateway-webpay-components-abstract.php:237
+#, php-format
+msgid "Refund of %s successfully sent to Monri."
 msgstr ""
-"Hvala što ste kupovali kod nas. Trenutno vaš status plaćanja je na čekanju."
 
-#: includes/gateway-adapter-webpay-form.php:250
-msgid "Transaction Declined: "
-msgstr "Transakcija odbijena: "
+#: includes/gateway-adapter-webpay-components.php:398
+#: includes/gateway-adapter-webpay-form.php:467
+#: includes/gateway-adapter-webpay-lightbox.php:352
+#: includes/gateway-adapter-wspay.php:553
+#: includes/gateway-webpay-components-abstract.php:280
+msgid "There was an error submitting the capture to Monri."
+msgstr ""
 
-#: includes/gateway-adapter-wspay.php:128
+#. translators: %s: amount which was successfully captured
+#: includes/gateway-adapter-webpay-components.php:407
+#: includes/gateway-adapter-webpay-form.php:476
+#: includes/gateway-adapter-webpay-lightbox.php:362
+#: includes/gateway-adapter-wspay.php:563
+#: includes/gateway-webpay-components-abstract.php:290
+#, php-format
+msgid "Capture of %s successfully sent to Monri."
+msgstr ""
+
+#: includes/gateway-adapter-webpay-components.php:449
+#: includes/gateway-adapter-webpay-form.php:518
+#: includes/gateway-adapter-webpay-lightbox.php:405
+#: includes/gateway-adapter-wspay.php:607
+#: includes/gateway-webpay-components-abstract.php:333
+msgid "There was an error submitting the void to Monri."
+msgstr ""
+
+#. translators: %s: amount which was successfully voided
+#: includes/gateway-adapter-webpay-components.php:457
+#: includes/gateway-adapter-webpay-form.php:526
+#: includes/gateway-adapter-webpay-lightbox.php:414
+#: includes/gateway-adapter-wspay.php:615
+#: includes/gateway-webpay-components-abstract.php:342
+#, php-format
+msgid "Void of %s successfully sent to Monri."
+msgstr ""
+
+#: includes/gateway-adapter-webpay-components.php:512
+msgid ""
+"Please read and accept the terms and conditions to proceed with your order."
+msgstr ""
+
+#: includes/gateway-adapter-webpay-form.php:86
+#: includes/gateway-adapter-webpay-lightbox.php:163 assets/js/blocks/index.js:1
+#: blocks/integration/installments.js:43
+msgid "No installments"
+msgstr "Bez rata"
+
+#: includes/gateway-adapter-webpay-form.php:212
+#: includes/gateway-adapter-webpay-lightbox.php:99
+#: includes/gateway-adapter-wspay-iframe.php:64
+#: includes/gateway-adapter-wspay-iframe.php:122
+#: includes/gateway-adapter-wspay.php:143
 msgid "Token does not exist."
 msgstr "Token ne postoji"
 
-#: includes/gateway-adapter-wspay.php:201
+#: includes/gateway-adapter-webpay-form.php:338
+#: includes/gateway-adapter-webpay-lightbox.php:246
+#: includes/gateway-adapter-wspay.php:310
+msgid "Monri payment successful<br/>Approval code: "
+msgstr "Monri plaćanje uspješno <br/>Approval code: "
+
+#: includes/gateway-adapter-webpay-form.php:348
+#: includes/gateway-adapter-webpay-lightbox.php:256
+#: templates/installments.php:13 assets/js/blocks/index.js:1
+#: blocks/integration/installments.js:90
+msgid "Number of installments: "
+msgstr "Broj rata: "
+
+#: includes/gateway-adapter-wspay.php:219
 msgid "Gateway currently not available."
 msgstr "Gateway trenutno nije dostupan"
 
-#: includes/gateway-adapter-wspay.php:273
-msgid ""
-"Thank you for shopping with us. However, the transaction has been declined."
-msgstr "Hvala što ste kupovali kod nas. Nažalost transakcija je odbijena."
+#: includes/gateway-webpay-components-abstract.php:166
+msgid "There was an error getting the order status"
+msgstr ""
 
-#: includes/installments-fee.php:64
-msgid "Installments fee"
-msgstr "Naknada za rate"
+#: includes/gateway-webpay-components-apple-pay.php:27
+#: assets/js/blocks/apple-pay.js:1
+#: blocks/integration/components-additional-methods/apple-pay.js:19
+#, fuzzy
+msgid "Monri Apple Pay"
+msgstr "Plaćanje putem Monri Apple Paya"
 
-#: includes/gateway.php:12
+#: includes/gateway-webpay-components-apple-pay.php:28
+#: assets/js/blocks/apple-pay.js:1
+#: blocks/integration/components-additional-methods/apple-pay.js:11
+msgid "Pay with Monri Apple Pay"
+msgstr "Plaćanje putem Monri Apple Paya"
+
+#: includes/gateway-webpay-components-google-pay.php:27
+#: assets/js/blocks/google-pay.js:1
+#: blocks/integration/components-additional-methods/google-pay.js:18
+#, fuzzy
+msgid "Monri Google Pay"
+msgstr "Plaćanje putem Monri Google Paya"
+
+#: includes/gateway-webpay-components-google-pay.php:28
+#: assets/js/blocks/google-pay.js:1
+#: blocks/integration/components-additional-methods/google-pay.js:10
+msgid "Pay with Monri Google Pay"
+msgstr "Plaćanje putem Monri Google Paya"
+
+#: includes/gateway-webpay-components-keks-pay.php:27
+#: assets/js/blocks/keks-pay.js:1
+#: blocks/integration/components-additional-methods/keks-pay.js:18
+#, fuzzy
+msgid "Monri Keks"
+msgstr "Plaćanje putem Monri Keks Paya"
+
+#: includes/gateway-webpay-components-keks-pay.php:28
+#: assets/js/blocks/keks-pay.js:1
+#: blocks/integration/components-additional-methods/keks-pay.js:9
+msgid "Pay with Monri Keks"
+msgstr "Plaćanje putem Monri Keks Paya"
+
+#: includes/gateway-webpay-components-pay-cek.php:27
+#: assets/js/blocks/pay-cek.js:1
+#: blocks/integration/components-additional-methods/pay-cek.js:18
+#, fuzzy
+msgid "Monri PayCek"
+msgstr "Plaćanje putem Monri PayCeka"
+
+#: includes/gateway-webpay-components-pay-cek.php:28
+#: assets/js/blocks/pay-cek.js:1
+#: blocks/integration/components-additional-methods/pay-cek.js:10
+msgid "Pay with Monri PayCek"
+msgstr "Plaćanje putem Monri PayCeka"
+
+#: includes/gateway.php:10 includes/gateway.php:16 includes/settings.php:67
+#: assets/js/blocks/index.js:1 blocks/integration/default-payment-method.js:7
+msgid "Monri"
+msgstr "Monri"
+
+#: includes/gateway.php:11
 msgid "Monri Payment Gateway Plug-in for WooCommerce"
 msgstr "Monri Payment Gateway Plug-in za WooCommerce"
 
-#: includes/gateway.php:114 includes/settings.php:70
+#: includes/installments-fee.php:114
+msgid "Installments fee"
+msgstr "Naknada za rate"
+
+#. translators: 1: credit card type 2: last 4 digits
+#: includes/payment-token-webpay.php:33
+#, php-format
+msgid "%1$s ending in %2$s "
+msgstr ""
+
+#. translators: 1: credit card type 2: last 4 digits 3: expiry month 4: expiry year
+#: includes/payment-token-wspay.php:33
+#, php-format
+msgid "%1$s ending in %2$s (expires %3$s/%4$s)"
+msgstr ""
+
+#: includes/settings.php:36
+msgid "Purchase"
+msgstr ""
+
+#: includes/settings.php:37
+msgid "Authorize"
+msgstr ""
+
+#: includes/settings.php:57
 msgid "Enable/Disable"
 msgstr "Enable/Disable"
 
-#: includes/gateway.php:116 includes/settings.php:72
+#: includes/settings.php:59
 msgid "Enable Monri"
 msgstr "Enable Monri"
 
-#: includes/gateway.php:120 includes/settings.php:76
-msgid "Payment Gateway Service:"
-msgstr "Payment Gateway Service:"
-
-#: includes/gateway.php:129 includes/settings.php:86
+#: includes/settings.php:63
 msgid "Title"
 msgstr "Naziv"
 
-#: includes/gateway.php:131
+#: includes/settings.php:65
 msgid "Title which the customer sees during checkout."
 msgstr "Naziv koji vidi kupac prilikom plaćanja"
 
-#: includes/gateway.php:136 includes/settings.php:93
+#: includes/settings.php:70
 msgid "Description"
 msgstr "Opis"
 
-#: includes/gateway.php:138
+#: includes/settings.php:72
 msgid "Description which the customer sees during checkout."
 msgstr "Opis koji vidi kupac prilikom plaćanja"
 
-#: includes/gateway.php:139 includes/settings.php:96
+#: includes/settings.php:73
 msgid "Pay quick and easy via Monri"
 msgstr "Plaćajte brzo i jednostavno putem Monrija"
 
-#: includes/gateway.php:142 includes/settings.php:99
+#: includes/settings.php:77
 msgid "Instructions"
 msgstr "Upute"
 
-#: includes/gateway.php:144 includes/settings.php:101
+#: includes/settings.php:79
 msgid "Instructions that will be added to the thank you page."
 msgstr "Upute koje će biti dodane na thank you page"
 
-#: includes/gateway.php:145 includes/settings.php:102
+#: includes/settings.php:80
 msgid "Instructions for Monri."
 msgstr "Upute za Monri"
 
-#: includes/gateway.php:148 includes/settings.php:147
-msgid "Monri Key"
-msgstr ""
+#: includes/settings.php:84
+#, fuzzy
+msgid "Payment gateway service:"
+msgstr "Payment Gateway Service:"
 
-#: includes/gateway.php:156 includes/settings.php:155
-msgid "Monri authenticity token"
-msgstr "Monri authenticity token"
-
-#: includes/gateway.php:164 includes/settings.php:163
-msgid "Monri WsPay Form ShopId"
-msgstr "Monri WsPay Form ShopId"
-
-#: includes/gateway.php:172 includes/settings.php:171
-msgid "Monri WsPay Form Secret"
-msgstr "Monri WsPay Form Secret"
-
-#: includes/gateway.php:180 includes/settings.php:179
-msgid "Monri WsPay Form Tokenization Enabled"
-msgstr "Monri WsPay Form Tokenization Enabled"
-
-#: includes/gateway.php:188 includes/settings.php:187
-msgid "Monri WsPay Form Tokenization ShopId"
-msgstr "Monri WsPay Form Tokenization ShopId"
-
-#: includes/gateway.php:196 includes/settings.php:195
-msgid "Monri WsPay Form Tokenization Secret"
-msgstr "Monri WsPay Form Tokenization Secret"
-
-#: includes/gateway.php:204
+#: includes/settings.php:92 includes/settings.php:109
 msgid "Integration type"
 msgstr "Integration type"
 
-#: includes/gateway.php:213
-msgid "Test mode"
-msgstr "Test mode"
+#: includes/settings.php:97 includes/settings.php:114
+msgid "Form"
+msgstr ""
 
-#: includes/gateway.php:222
+#: includes/settings.php:98
+msgid "Components (beta)"
+msgstr ""
+
+#: includes/settings.php:99
+msgid "LightBox"
+msgstr ""
+
+#: includes/settings.php:115
+msgid "Iframe"
+msgstr ""
+
+#: includes/settings.php:125
+msgid "Key"
+msgstr ""
+
+#: includes/settings.php:136
+#, fuzzy
+msgid "Authenticity token"
+msgstr "Monri authenticity token"
+
+#: includes/settings.php:147
+msgid "Shop ID"
+msgstr ""
+
+#: includes/settings.php:158
+msgid "Secret key"
+msgstr ""
+
+#: includes/settings.php:169 includes/settings.php:182
+#, fuzzy
+msgid "Tokenization Enable/Disable"
+msgstr "Enable/Disable"
+
+#: includes/settings.php:171 includes/settings.php:184
+#, fuzzy
+msgid "Enable Tokenization"
+msgstr "Enable Monri"
+
+#: includes/settings.php:195
+#, fuzzy
+msgid "Tokenization Shop ID"
+msgstr "Monri WsPay Form Tokenization ShopId"
+
+#: includes/settings.php:206
+#, fuzzy
+msgid "Tokenization Secret key"
+msgstr "Monri WsPay Form Tokenization Secret"
+
+#: includes/settings.php:218
 msgid "Transaction type"
 msgstr "Transaction type"
 
-#: includes/gateway.php:231
+#: includes/settings.php:227
+msgid "Test mode"
+msgstr "Test mode"
+
+#: includes/settings.php:228
+msgid ""
+"Just test the gateway, no real orders will be placed on the gateway side."
+msgstr ""
+
+#: includes/settings.php:236
+#, fuzzy
+msgid "Debug mode"
+msgstr "Test mode"
+
+#: includes/settings.php:237
+msgid ""
+"Save detailed messages, error messages and API requests to the WooCommerce "
+"Status log."
+msgstr ""
+
+#: includes/settings.php:245
 msgid "Form language"
 msgstr "Jezik forme"
 
-#: includes/gateway.php:240 includes/settings.php:259
+#: includes/settings.php:254
 msgid "Allow paying in installments"
 msgstr "Dozvoli plaćanje na rate"
 
-#: includes/gateway.php:249 includes/settings.php:269
+#: includes/settings.php:268
 msgid "Number of allowed installments"
 msgstr "Broj dozvoljenih rata"
 
-#: includes/gateway.php:258 includes/settings.php:279
+#: includes/settings.php:283
 msgid "Price limit for paying in installments"
 msgstr "Limit za plaćanje na rate"
 
-#: includes/gateway.php:260 includes/settings.php:281
+#: includes/settings.php:285
 msgid ""
 "This controls the bottom price limit on which the installments can be used."
 msgstr "Donja granica cijene za koju su dostupne rate"
 
-#: includes/gateway.php:271 includes/settings.php:292
-msgid "This controls the price increase when paying with installments."
-msgstr "Povećanje cijene prilikom plaćanje na rate "
+#: includes/settings.php:295
+#, fuzzy
+msgid "Transaction info in order"
+msgstr "Detalji transakcije"
 
-#. translators: 1: credit card type 2: last 4 digits 3: expiry month 4: expiry year
-#: includes/payment-token-wspay.php:34
-msgid "%1$s ending in %2$s (expires %3$s/%4$s)"
+#: includes/settings.php:296
+msgid "Show Monri transaction info on Thank You page. Required by some banks."
 msgstr ""
 
-#: includes/settings.php:88
-msgid "This controls the title which the user sees during checkout."
-msgstr "Naslov koji kupac vidi prilikom kupovine"
-
-#: includes/settings.php:95
-msgid "This controls the description which the user sees during checkout."
-msgstr "Opis koji kupac vidi prilikom kupovine"
-
-#: includes/settings.php:105
-msgid "Success page"
+#: includes/settings.php:310 includes/settings.php:312
+msgid "Callback url"
 msgstr ""
 
-#: includes/settings.php:107
-msgid "Suceess URL must be copied to Monri Account in responding field!"
-msgstr "Success URL potrebno je kopirati u Monri Account na predviđeno mjesto! "
-
-#: includes/settings.php:112
-msgid "Callback URL endpoint"
+#: includes/settings.php:313
+msgid "To enable callback send this url to Monri WSPay support."
 msgstr ""
 
-#: includes/settings.php:114
-msgid "Callback URL endpoint which receives POST request from Monri Gateway."
-msgstr "Monri Callback URL endpoint koji će primati POST zahtjev sa Monri Gateway-a."
-
-#: includes/settings.php:120
-msgid "Success URL override"
+#: includes/settings.php:326
+msgid "Additional Payment Methods"
 msgstr ""
 
-#: includes/settings.php:122
-msgid "Success URL you would like to use for transaction. (HTTPS)"
-msgstr "Success URL koji želite koristiti pri svakoj transakciji. (HTTPS)"
-
-#: includes/settings.php:129
-msgid "Cancel URL override"
+#: includes/settings.php:331
+msgid "KEKS pay"
 msgstr ""
 
-#: includes/settings.php:131
-msgid "Cancel URL you would like to use for transaction. (HTTPS)"
-msgstr "Cancel URL koji želite koristiti pri svakoj transakciji. (HTTPS)"
-
-#: includes/settings.php:138
-msgid "Callback URL override"
+#: includes/settings.php:332
+msgid "PayCek"
 msgstr ""
 
-#: includes/settings.php:140
-msgid "Callback URL you would like to use for transaction. (HTTPS)"
-msgstr "Callback URL koji želite koristiti pri svakoj transakciji. (HTTPS)"
-
-#: includes/settings.php:219
-msgid "Integration type:"
-msgstr "Tip integracije"
-
-#: includes/settings.php:229
-msgid "Test mode enabled:"
+#: includes/settings.php:333
+msgid "Google Pay"
 msgstr ""
 
-#: includes/settings.php:239
-msgid "Transaction type:"
+#: includes/settings.php:334
+msgid "Apple Pay"
 msgstr ""
 
-#: includes/settings.php:249
-msgid "Form language:"
+#: includes/settings.php:337
+msgid "Select additional payment methods, if they are set on Monri Webpay."
 msgstr ""
 
-#: includes/settings.php:290
+#. translators: %d: number of installments
+#: includes/settings.php:351
+#, php-format
 msgid "Price increase when paying in %d installments"
 msgstr "Povećanje cijene prilikom plaćanja na %d rata"
 
-#: monri.php:45
+#: includes/settings.php:353
+msgid "This controls the price increase when paying with installments."
+msgstr "Povećanje cijene prilikom plaćanje na rate "
+
+#: includes/settings.php:355
+msgid "0"
+msgstr ""
+
+#: monri.php:87
 msgid "Settings"
 msgstr "Postavke"
 
-#: templates/components.php:23
+#: templates/components-apple-pay.php:11 templates/components-google-pay.php:11
+#: templates/components-keks.php:11
+msgid "After payment, please wait a moment while we verify your transaction..."
+msgstr ""
+"Nakon uplate, molimo pričekajte trenutak dok ne provjerimo vašu "
+"transakciju..."
+
+#: templates/components.php:119 assets/js/blocks/index.js:1
+#: blocks/integration/web-pay/components.js:104
+msgid "Transaction declined, please reload the page."
+msgstr "Transakcija odbijena, molimo Vas da osvježite stranicu."
+
+#: templates/installments.php:25
 msgid "Fees may be applied for installments"
 msgstr "Za rate se mogu primijeniti naknade"
 
-#: templates/redirect-form.php:13
+#: templates/redirect-form.php:16
 msgid "Pay via Monri"
 msgstr ""
 
-#: templates/redirect-form.php:15
+#: templates/redirect-form.php:18
 msgid "Cancel order &amp; restore cart"
 msgstr ""
 
-#: templates/redirect-form.php:26
-msgid ""
-"Thank you for your order. You are being redirected to Monri so you can complete payment."
-msgstr ""
-"Hvala na narudžbi. Sada Vas preusmjeravamo na Monri kako bi završili "
-"plaćanje."
-
-#: templates/transaction-info.php:7
+#: templates/transaction-info.php:10
 msgid "Transaction info"
 msgstr "Detalji transakcije"
 
-#: templates/transaction-info.php:11
+#: templates/transaction-info.php:12
 msgid "Transaction ID"
 msgstr "ID transakcije"
 
-#: templates/transaction-info.php:11
+#: templates/transaction-info.php:13
 msgid "Approval code"
 msgstr "Broj odobrenja"
 
-#: templates/transaction-info.php:11
+#: templates/transaction-info.php:14
 msgid "Credit card type"
 msgstr "Tip kreditne kartice"
 
-#: templates/transaction-info.php:11
+#: templates/transaction-info.php:15
 msgid "Credit card number"
 msgstr "Broj kreditne kartice"
 
-#: templates/transaction-info.php:11
+#: templates/transaction-info.php:16
 msgid "Payment plan"
 msgstr "Rate"
 
-#: templates/transaction-info.php:11
+#: templates/transaction-info.php:17
 msgid "Date/Time"
 msgstr "Datum/Vrijeme"
 
-#: templates/transaction-info.php:11
-msgid "Pay with Monri Google Pay"
-msgstr "Plaćanje putem Monri Google Paya"
+#: assets/js/blocks/index.js:1 blocks/integration/installments.js:33
+msgid "An additional installments fee has been applied"
+msgstr "Primijenjena je naknada za dodatne rate"
 
-#: templates/transaction-info.php:11
-msgid "Pay with Monri Apple Pay"
-msgstr "Plaćanje putem Monri Apple Paya"
+#~ msgid "Monri payment completed."
+#~ msgstr "Monri plaćanje uspješno."
 
-#: templates/transaction-info.php:11
-msgid "Pay with Monri Keks"
-msgstr "Plaćanje putem Monri Keks Paya"
+#~ msgid "Transaction failed."
+#~ msgstr "Transakcija neuspješna."
 
-#: templates/transaction-info.php:11
-msgid "Pay with Monri PayCek"
-msgstr "Plaćanje putem Monri PayCeka"
+#~ msgid "Token is not provided"
+#~ msgstr "Token nije dostupan"
 
-#: templates/transaction-info.php:11
-msgid "After payment, please wait a moment while we verify your transaction..."
-msgstr "Nakon uplate, molimo pričekajte trenutak dok ne provjerimo vašu transakciju..."
+#~ msgid "Monri - Order amount: "
+#~ msgstr "Monri - Iznos narudžbe: "
+
+#~ msgid "First name must have between 3 and 11 characters"
+#~ msgstr "Ime mora imati između 3 i 11 znakova"
+
+#~ msgid "Last name must have between 3 and 28 characters"
+#~ msgstr "Prezime mora imati između 3 i 28 znakova"
+
+#~ msgid "Address must have between 3 and 300 characters"
+#~ msgstr "Adresa mora imati između 3 i 300 znakova"
+
+#~ msgid "City must have between 3 and 30 characters"
+#~ msgstr "Grad mora imati između 3 i 30 znakova"
+
+#~ msgid "ZIP must have between 3 and 30 characters"
+#~ msgstr "Poštanski broj mora imati između 3 i 30 znakova"
+
+#~ msgid "Phone must have between 3 and 30 characters"
+#~ msgstr "Telefon mora imati između 3 i 30 znamenki"
+
+#~ msgid "Email must have between 3 and 30 characters"
+#~ msgstr "Email mora imati između 3 i 30 znakova"
+
+#~ msgid ""
+#~ "Thank you for shopping with us. Your account has been charged and your "
+#~ "transaction is successful. We will be shipping your order to you soon."
+#~ msgstr ""
+#~ "Hvala što ste kupovali kod nas. Vaš račun je naplaćen i transakcija je "
+#~ "uspješna. Uskoro ćemo vam poslati vašu narudžbu."
+
+#~ msgid "Monri payment status is pending<br/>Approval code: "
+#~ msgstr "Monri plaćanje na čekanju<br/>Approval code: "
+
+#~ msgid ""
+#~ "Thank you for shopping with us. Right now your payment status is pending, "
+#~ "We will keep you posted regarding the status of your order through e-mail"
+#~ msgstr ""
+#~ "Hvala što ste kupovali kod nas. Trenutno vaš status plaćanja je na "
+#~ "čekanju."
+
+#~ msgid "Transaction Declined: "
+#~ msgstr "Transakcija odbijena: "
+
+#~ msgid ""
+#~ "Thank you for shopping with us. However, the transaction has been "
+#~ "declined."
+#~ msgstr "Hvala što ste kupovali kod nas. Nažalost transakcija je odbijena."
+
+#~ msgid "Monri WsPay Form ShopId"
+#~ msgstr "Monri WsPay Form ShopId"
+
+#~ msgid "Monri WsPay Form Secret"
+#~ msgstr "Monri WsPay Form Secret"
+
+#~ msgid "Monri WsPay Form Tokenization Enabled"
+#~ msgstr "Monri WsPay Form Tokenization Enabled"
+
+#~ msgid "This controls the title which the user sees during checkout."
+#~ msgstr "Naslov koji kupac vidi prilikom kupovine"
+
+#~ msgid "This controls the description which the user sees during checkout."
+#~ msgstr "Opis koji kupac vidi prilikom kupovine"
+
+#~ msgid "Suceess URL must be copied to Monri Account in responding field!"
+#~ msgstr ""
+#~ "Success URL potrebno je kopirati u Monri Account na predviđeno mjesto! "
+
+#~ msgid ""
+#~ "Callback URL endpoint which receives POST request from Monri Gateway."
+#~ msgstr ""
+#~ "Monri Callback URL endpoint koji će primati POST zahtjev sa Monri Gateway-"
+#~ "a."
+
+#~ msgid "Success URL you would like to use for transaction. (HTTPS)"
+#~ msgstr "Success URL koji želite koristiti pri svakoj transakciji. (HTTPS)"
+
+#~ msgid "Cancel URL you would like to use for transaction. (HTTPS)"
+#~ msgstr "Cancel URL koji želite koristiti pri svakoj transakciji. (HTTPS)"
+
+#~ msgid "Callback URL you would like to use for transaction. (HTTPS)"
+#~ msgstr "Callback URL koji želite koristiti pri svakoj transakciji. (HTTPS)"
+
+#~ msgid "Integration type:"
+#~ msgstr "Tip integracije"
+
+#~ msgid ""
+#~ "Thank you for your order. You are being redirected to Monri so you can "
+#~ "complete payment."
+#~ msgstr ""
+#~ "Hvala na narudžbi. Sada Vas preusmjeravamo na Monri kako bi završili "
+#~ "plaćanje."
