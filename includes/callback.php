@@ -42,7 +42,10 @@ class Monri_WC_Callback {
 	 */
 	private function handle_monri_webpay_callback() {
 
-		if ( $_SERVER['REQUEST_METHOD'] !== 'POST' ) {
+		if (
+			( ! array_key_exists( 'REQUEST_METHOD', $_SERVER ) )
+			|| $_SERVER['REQUEST_METHOD'] !== 'POST'
+		) {
 			$this->error( 'Invalid request method.', array( 400, 'Bad Request' ) );
 		}
 
@@ -50,7 +53,7 @@ class Monri_WC_Callback {
 			$this->error( 'Authorization header missing.', array( 400, 'Bad Request' ) );
 		}
 
-		$authorization = sanitize_text_field( $_SERVER['HTTP_AUTHORIZATION'] );
+		$authorization = sanitize_text_field( wp_unslash( $_SERVER['HTTP_AUTHORIZATION'] ) );
 		// Strip-out the 'WP3-callback' part from the Authorization header.
 		$authorization = trim( str_replace( 'WP3-callback', '', $authorization ) );
 
@@ -62,7 +65,7 @@ class Monri_WC_Callback {
 
 		$bad_request_header = array( 400, 'Bad Request' );
 
-		// json post comming from Monri webhook, validated by header, not user input but trusted data
+		// JSON post coming from Monri webhook, validated by header, not user input but trusted data
 		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		$json = file_get_contents( 'php://input' );
 
@@ -124,7 +127,11 @@ class Monri_WC_Callback {
 	 */
 	private function handle_monri_wspay_callback() {
 		$bad_request = array( 400, 'Bad Request' );
-		if ( $_SERVER['REQUEST_METHOD'] !== 'POST' ) {
+
+		if (
+			( ! array_key_exists( 'REQUEST_METHOD', $_SERVER ) )
+			|| $_SERVER['REQUEST_METHOD'] !== 'POST'
+		) {
 			$this->error( 'Invalid request method.', $bad_request );
 		}
 
