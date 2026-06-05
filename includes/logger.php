@@ -15,6 +15,7 @@ class Monri_WC_Logger {
 	public static function log( $message, $source = null ) {
 
 		if ( ! is_string( $message ) ) {
+			// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r -- This is a logger class, so it does that.
 			$message = print_r( $message, true );
 		}
 
@@ -30,6 +31,7 @@ class Monri_WC_Logger {
 		}
 
 		if ( WP_DEBUG && WP_DEBUG_LOG ) {
+			// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log -- This is a logger class, so it does that.
 			error_log( $message );
 		}
 	}

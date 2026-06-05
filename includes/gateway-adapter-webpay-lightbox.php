@@ -88,10 +88,12 @@ class Monri_WC_Gateway_Adapter_Webpay_Lightbox extends Monri_WC_Gateway_Adapter_
 		if ( $this->tokenization_enabled() && is_checkout() && is_user_logged_in() ) {
 
 			$use_token = null;
+			// phpcs:disable WordPress.Security.NonceVerification.Missing
 			if ( isset( $_POST['wc-monri-payment-token'] ) &&
 			     ! in_array( $_POST['wc-monri-payment-token'], [ 'not-selected', 'new', '' ], true )
 			) {
 				$token_id = sanitize_text_field( $_POST['wc-monri-payment-token'] );
+				// phpcs:enable WordPress.Security.NonceVerification.Missing
 
 				$tokens   = $this->payment->get_tokens();
 
@@ -103,8 +105,10 @@ class Monri_WC_Gateway_Adapter_Webpay_Lightbox extends Monri_WC_Gateway_Adapter_
 				$use_token = $tokens[ $token_id ];
 			}
 
+			// phpcs:disable WordPress.Security.NonceVerification.Missing
 			$new_token = isset( $_POST['wc-monri-new-payment-method'] ) &&
 			             in_array( $_POST['wc-monri-new-payment-method'], [ 'true', '1', 1 ], true );
+			// phpcs:enable WordPress.Security.NonceVerification.Missing
 
 			// paying with tokenized card
 			if ( $use_token ) {
@@ -169,6 +173,7 @@ class Monri_WC_Gateway_Adapter_Webpay_Lightbox extends Monri_WC_Gateway_Adapter_
 			}
 
 			// Prevents rendering this file multiple times - JS part gets duplicated and executed twice
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- WC checks nonce.
 			if ( isset( $_REQUEST['wc-ajax'] ) && $_REQUEST['wc-ajax'] === 'update_order_review' ) {
 				wc_get_template(
 					'installments.php',
@@ -182,6 +187,7 @@ class Monri_WC_Gateway_Adapter_Webpay_Lightbox extends Monri_WC_Gateway_Adapter_
 
 		}
 
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- WC checks nonce.
 		if ( isset( $_REQUEST['wc-ajax'] ) && $_REQUEST['wc-ajax'] === 'update_order_review' ) {
 			wc_get_template(
 				'lightbox-iframe-form.php',
@@ -212,6 +218,8 @@ class Monri_WC_Gateway_Adapter_Webpay_Lightbox extends Monri_WC_Gateway_Adapter_
 		if ( ! $order || $order->get_payment_method() !== $this->payment->id ) {
 			return;
 		}
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Not ajax.
+		// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r -- Logging stuff, this is needed.
 		Monri_WC_Logger::log( 'Response data: ' . sanitize_textarea_field( print_r( $_GET, true ) ), __METHOD__ );
 
 		$requested_order_id = sanitize_text_field( $_GET['order_number'] );
@@ -270,7 +278,7 @@ class Monri_WC_Gateway_Adapter_Webpay_Lightbox extends Monri_WC_Gateway_Adapter_
 				}
 				$this->save_user_token( $order->get_user_id(), $token_data );
 			}
-
+			// phpcs:enable WordPress.Security.NonceVerification.Recommended
 		} else {
 			$order->update_status( 'failed', "Response not authorized - response code is $response_code." );
 			// $order->add_order_note( __( 'Transaction Declined: ', 'monri' ) . sanitize_text_field( $_GET['Error'] ) );
@@ -285,10 +293,12 @@ class Monri_WC_Gateway_Adapter_Webpay_Lightbox extends Monri_WC_Gateway_Adapter_
 	private function validate_monri_response( $order ) {
 
 		// validate digest hash format
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Not ajax.
 		if ( empty( $_GET['digest'] ) || ! preg_match( '/^[a-f0-9]{128}$/', $_GET['digest'] ) ) {
 			return false;
 		}
 
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		$digest = Monri_WC_Utils::sanitize_hash( $_GET['digest'] );
 
 		$calculated_url = $this->payment->get_return_url( $order ); // use current url?
