@@ -107,6 +107,7 @@ class Monri_WC_Gateway_Adapter_Webpay_Components {
 		}
 
 		// Prevents rendering this file multiple times - JS part gets duplicated and executed twice
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Already checked by WC.
 		if ( isset( $_REQUEST['wc-ajax'] ) && $_REQUEST['wc-ajax'] === "update_order_review" ) {
 			wc_get_template( 'components.php', array(
 				'config'       => array(
@@ -142,10 +143,11 @@ class Monri_WC_Gateway_Adapter_Webpay_Components {
 	 */
 	public function process_payment( $order_id ) {
 
-		// monri-transaction is a json value, it is individually sanitized after decode
-		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		// monri-transaction is a JSON value, it is individually sanitized after decode
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.NonceVerification.Missing
 		$transaction = json_decode( wp_unslash( $_POST['monri-transaction'] ?? '{}' ), true );
 
+		// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r -- Logging stuff, this is needed.
 		Monri_WC_Logger::log( "Response data: " . sanitize_textarea_field( print_r( $transaction, true ) ), __METHOD__ );
 
 		if ( empty( $transaction ) ) {
@@ -503,7 +505,7 @@ class Monri_WC_Gateway_Adapter_Webpay_Components {
 	 * @return void
 	 */
 	public function after_checkout_validation( $data, $errors ) {
-
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Already checked by WC.
 		if ( empty( $_POST['monri_components_checkout_validation'] ) ) {
 			return;
 		}
