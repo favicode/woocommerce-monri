@@ -1,25 +1,45 @@
 === Monri Payments Gateway for WooCommerce ===
 Contributors: monripayments
-Tags: monri, credit card, payment, woocommerce
+Tags: monri, woocommerce, payment gateway, credit card payments, online payments, croatia, wspay, keks pay, apple pay, google pay, installments
 Requires at least: 5.3
-Tested up to: 6.9.4
+Tested up to: 7.0
 Requires PHP: 7.3
 Stable tag: 3.8.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Accept payments using Monri WebPay and WSPay.
+Accept credit card payments, WSPay, Keks Pay, Apple Pay and Google Pay in WooCommerce with Monri Payments.
 
 == Description ==
 
 Monri's online payments enable you to quickly and easily charge debit and credit cards at all online sales points with maximum security.
 
+Monri is a trusted payment gateway used by merchants across Croatia, Bosnia and Herzegovina (BiH), and the European Union. The plugin supports multiple payment experiences including Monri WebPay, WSPay, card tokenization, installments, and modern checkout integrations.
+
+Supported payment methods and features include:
+
+* Credit and debit card payments
+* Monri WebPay Redirect
+* Monri WebPay Components
+* Monri WebPay Lightbox
+* WSPay integration
+* Saved cards and tokenization
+* Keks Pay
+* Apple Pay
+* Google Pay
+* Installment payments
+* WooCommerce Blocks support
+* HPOS support
+* Refunds, captures and voids from WooCommerce administration
+
+Customers can complete payments securely while merchants benefit from advanced fraud protection, 3-D Secure authentication, and a payment platform designed for WooCommerce.
+
 == Installation ==
 
-You will first need to register with Monri in order to use this plugin on your site. Additional fees apply.
-Please complete the [inquiry form](https://monri.com/contact/), and we will contact you regarding setup and any information you will need.
+You will first need to register with Monri to use this plugin on your site. Additional fees apply.
+Please complete the [inquiry form](https://monri.com/contact/), and we will reach out to you regarding setup and any information you will need.
 
-If you used older Monri plugin, it is best to remove it first before using this new version.
+If you used the older Monri plugin, it is best to remove it first before using this new version.
 Old settings will be migrated but make sure to recheck them and test new integration.
 
 == Documentation ==
@@ -29,6 +49,44 @@ You can find additional information regarding Monri payments on WooCommerce at
 
 You can find additional information regarding Privacy policy of Monri payments on WooCommerce at
 [Monri's privacy policy page](https://ipg.monri.com/en/privacy-policy).
+
+== FAQ ==
+
+= What is Monri Payments? =
+
+Monri Payments is an online payment platform that enables merchants to accept credit card and alternative payment methods through WooCommerce.
+
+= Is Monri a Croatian payment gateway? =
+
+Yes. Monri is widely used by merchants in Croatia and throughout the region, while also supporting international and EU online payments.
+
+= Does this plugin support WSPay? =
+
+Yes. The plugin includes support for WSPay payment processing and WSPay tokenization features where available.
+
+= Does WooCommerce support Keks Pay? =
+
+Yes. Recent versions of the plugin include support for Keks Pay through Monri Payments.
+
+= Does the plugin support Apple Pay and Google Pay? =
+
+Yes. Apple Pay and Google Pay are available through Monri Payments where enabled for your merchant account.
+
+= Can customers save their cards for future purchases? =
+
+Yes. The plugin supports card tokenization and saved payment methods for eligible payment flows.
+
+= Does the plugin support installment payments? =
+
+Yes. Merchants can offer installment payments when supported by their acquiring bank and Monri configuration.
+
+= Does the plugin support WooCommerce Blocks and HPOS? =
+
+Yes. The plugin supports WooCommerce Blocks (Checkout Block) and High-Performance Order Storage (HPOS).
+
+= How do I start using Monri Payments? =
+
+You must first open a merchant account with Monri. Complete the inquiry form on Monri's website and the Monri team will guide you through the setup process.
 
 == Screenshots ==
 
