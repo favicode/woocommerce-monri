@@ -28,7 +28,7 @@ class Monri_WC_Gateway_Webpay_Components_Keks_Pay extends Monri_WC_Gateway_Webpa
 		$this->description = __( 'Pay with Monri Keks', 'monri' );
 
 		add_action( 'woocommerce_receipt_' . $this->id, array( $this, 'process_components' ) );
-		$this->register_purchase_summary_hook();
+		add_action( 'woocommerce_before_thankyou', array( $this, 'process_return' ) );
 
 		// load components.js on frontend checkout.
 		add_action(

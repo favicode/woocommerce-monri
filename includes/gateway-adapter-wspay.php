@@ -1,10 +1,7 @@
 <?php
 
-require_once __DIR__ . '/trait-purchase-summary.php';
-
 class Monri_WC_Gateway_Adapter_Wspay {
 
-	use Monri_WC_Purchase_Summary;
 
 	/**
 	 * Adapter ID
@@ -75,7 +72,7 @@ class Monri_WC_Gateway_Adapter_Wspay {
 			}, 0, 2 );
 		}
 
-		$this->register_purchase_summary_hook();
+		add_action( 'template_redirect', [ $this, 'process_return_on_summary' ] );
 		add_action( 'woocommerce_thankyou_monri', [ $this, 'thankyou_page' ] );
 		add_action( 'woocommerce_order_status_changed', [ $this, 'process_capture' ], null, 3 );
 		add_action( 'woocommerce_order_status_changed', [ $this, 'process_void' ], null, 3 );
@@ -248,28 +245,26 @@ class Monri_WC_Gateway_Adapter_Wspay {
 	/**
 	 * Monri returns on thankyou page
 	/**
-	 * Get the order identifier for WSPay redirect returns.
+	 * Process return when landing on the order-received page (handles Elementor Pro custom thank-you pages).
 	 *
-	 * @return false|string Order ID or identifier, or false if not a valid return.
+	 * @return void
 	 */
-	protected function get_summary_order_identifier() {
-		// Only process requests on the order-received endpoint.
+	public function process_return_on_summary() {
 		if ( ! is_wc_endpoint_url( 'order-received' ) ) {
-			return false;
+			return;
 		}
 
-		// WSPay uses ShoppingCartID and Signature parameters.
-		if ( ! empty( $_GET['ShoppingCartID'] ) || ! empty( $_GET['Signature'] )) {
-			$order_id = sanitize_text_field( $_GET['ShoppingCartID'] );
-
-			if ( $this->is_test_mode() ) {
-				$order_id = Monri_WC_Utils::resolve_real_order_id( $order_id );
-			}
-
-			return $order_id;
+		if ( empty( $_GET['ShoppingCartID'] ) && empty( $_GET['Signature'] ) ) {
+			return;
 		}
 
-		return false;
+		$order_id = sanitize_text_field( $_GET['ShoppingCartID'] );
+
+		if ( $this->payment->get_option_bool( 'test_mode' ) ) {
+			$order_id = Monri_WC_Utils::resolve_real_order_id( $order_id );
+		}
+
+		$this->process_return( $order_id );
 	}
 
 	/**
