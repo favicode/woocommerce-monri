@@ -202,6 +202,31 @@ class Monri_WC_Gateway_Adapter_Webpay_Lightbox extends Monri_WC_Gateway_Adapter_
 
 
 	/**
+	 * Get the order identifier for Webpay Lightbox redirect returns.
+	 *
+	 * @return false|string Order ID or identifier, or false if not a valid return.
+	 */
+	protected function get_summary_order_identifier() {
+		// Only process requests on the order-received endpoint.
+		if ( ! is_wc_endpoint_url( 'order-received' ) ) {
+			return false;
+		}
+
+		// Webpay Lightbox uses order_number and digest parameters.
+		if ( ! empty( $_GET['order_number'] ) || ! empty( $_GET['digest'] )) {
+			$order_id = sanitize_text_field( $_GET['order_number'] );
+
+			if ( $this->is_test_mode() ) {
+				$order_id = Monri_WC_Utils::resolve_real_order_id( $order_id );
+			}
+
+			return $order_id;
+		}
+
+		return false;
+	}
+
+	/**
 	 * Monri returns on thankyou page
 	 *
 	 * @param int $order_id

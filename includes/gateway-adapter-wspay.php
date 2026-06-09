@@ -247,7 +247,32 @@ class Monri_WC_Gateway_Adapter_Wspay {
 
 	/**
 	 * Monri returns on thankyou page
+	/**
+	 * Get the order identifier for WSPay redirect returns.
 	 *
+	 * @return false|string Order ID or identifier, or false if not a valid return.
+	 */
+	protected function get_summary_order_identifier() {
+		// Only process requests on the order-received endpoint.
+		if ( ! is_wc_endpoint_url( 'order-received' ) ) {
+			return false;
+		}
+
+		// WSPay uses ShoppingCartID and Signature parameters.
+		if ( ! empty( $_GET['ShoppingCartID'] ) || ! empty( $_GET['Signature'] )) {
+			$order_id = sanitize_text_field( $_GET['ShoppingCartID'] );
+
+			if ( $this->is_test_mode() ) {
+				$order_id = Monri_WC_Utils::resolve_real_order_id( $order_id );
+			}
+
+			return $order_id;
+		}
+
+		return false;
+	}
+
+	/**
 	 * @param int $order_id
 	 *
 	 * @return void

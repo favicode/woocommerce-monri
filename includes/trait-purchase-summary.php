@@ -33,6 +33,11 @@ trait Monri_WC_Purchase_Summary {
 	 * @return false|string Order ID or identifier, or false if not a valid return.
 	 */
 	protected function get_summary_order_identifier() {
+		// Only process requests on the order-received endpoint.
+		if ( ! is_wc_endpoint_url( 'order-received' ) ) {
+			return false;
+		}
+
 		// Webpay (form/lightbox)
 		if ( ! empty( $_GET['order_number'] ) || ! empty( $_GET['digest'] )) {
 			$order_id = sanitize_text_field( $_GET['order_number'] );
@@ -64,7 +69,7 @@ trait Monri_WC_Purchase_Summary {
 	 *
 	 * @return bool
 	 */
-	private function is_test_mode() {
+	protected function is_test_mode() {
 		if ( isset( $this->payment ) && method_exists( $this->payment, 'get_option_bool' ) ) {
 			return $this->payment->get_option_bool( 'test_mode' );
 		}
