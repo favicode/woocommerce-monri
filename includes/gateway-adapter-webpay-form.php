@@ -2,7 +2,6 @@
 
 class Monri_WC_Gateway_Adapter_Webpay_Form {
 
-
 	/**
 	 * Adapter ID
 	 */
@@ -33,7 +32,6 @@ class Monri_WC_Gateway_Adapter_Webpay_Form {
  		add_action( 'template_redirect', [ $this, 'process_return_on_summary' ] );
 		add_action( 'woocommerce_order_status_changed', [ $this, 'process_capture' ], null, 4 );
 		add_action( 'woocommerce_order_status_changed', [ $this, 'process_void' ], null, 4 );
-
 
 		// load installments fee logic if installments enabled
 		if ( $this->payment->get_option( 'paying_in_installments' ) ) {

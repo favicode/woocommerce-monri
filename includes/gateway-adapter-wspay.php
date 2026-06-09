@@ -2,7 +2,6 @@
 
 class Monri_WC_Gateway_Adapter_Wspay {
 
-
 	/**
 	 * Adapter ID
 	 */
