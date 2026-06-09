@@ -304,7 +304,7 @@ class Monri_WC_Gateway_Adapter_Webpay_Form {
 			return;
 		}
 
-		if ( empty( $_GET['order_number'] ) && empty( $_GET['digest'] ) ) {
+		if ( empty( $_GET['order_number'] ) || empty( $_GET['digest'] ) ) {
 			return;
 		}
 

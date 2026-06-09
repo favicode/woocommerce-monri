@@ -254,7 +254,7 @@ class Monri_WC_Gateway_Adapter_Wspay {
 			return;
 		}
 
-		if ( empty( $_GET['ShoppingCartID'] ) && empty( $_GET['Signature'] ) ) {
+		if ( empty( $_GET['ShoppingCartID'] ) || empty( $_GET['Signature'] ) ) {
 			return;
 		}
 
