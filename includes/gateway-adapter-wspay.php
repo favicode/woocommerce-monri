@@ -242,8 +242,6 @@ class Monri_WC_Gateway_Adapter_Wspay {
 	}
 
 	/**
-	 * Monri returns on thankyou page
-	/**
 	 * Process return when landing on the order-received page.
 	 *
 	 * @return void
