@@ -27,7 +27,6 @@ class Monri_WC_Gateway_Adapter_Webpay_Lightbox extends Monri_WC_Gateway_Adapter_
 	public function init( $payment ) {
 		parent::init( $payment );
 
-		add_action( 'woocommerce_before_thankyou', array( $this, 'process_return' ) );
 		add_action( 'woocommerce_order_status_changed', array( $this, 'process_capture' ), null, 4 );
 		add_action( 'woocommerce_order_status_changed', array( $this, 'process_void' ), null, 4 );
 		add_action( 'woocommerce_receipt_' . $this->payment->id, array( $this, 'process_payment' ) );

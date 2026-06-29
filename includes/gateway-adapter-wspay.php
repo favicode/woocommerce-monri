@@ -71,7 +71,7 @@ class Monri_WC_Gateway_Adapter_Wspay {
 			}, 0, 2 );
 		}
 
-		add_action( 'woocommerce_before_thankyou', [ $this, 'process_return' ] );
+		add_action( 'template_redirect', [ $this, 'process_return_on_summary' ] );
 		add_action( 'woocommerce_thankyou_monri', [ $this, 'thankyou_page' ] );
 		add_action( 'woocommerce_order_status_changed', [ $this, 'process_capture' ], null, 3 );
 		add_action( 'woocommerce_order_status_changed', [ $this, 'process_void' ], null, 3 );
@@ -242,8 +242,29 @@ class Monri_WC_Gateway_Adapter_Wspay {
 	}
 
 	/**
-	 * Monri returns on thankyou page
+	 * Process return when landing on the order-received page.
 	 *
+	 * @return void
+	 */
+	public function process_return_on_summary() {
+		if ( ! is_wc_endpoint_url( 'order-received' ) ) {
+			return;
+		}
+
+		if ( empty( $_GET['ShoppingCartID'] ) || empty( $_GET['Signature'] ) ) {
+			return;
+		}
+
+		$order_id = sanitize_text_field( $_GET['ShoppingCartID'] );
+
+		if ( $this->payment->get_option_bool( 'test_mode' ) ) {
+			$order_id = Monri_WC_Utils::resolve_real_order_id( $order_id );
+		}
+
+		$this->process_return( $order_id );
+	}
+
+	/**
 	 * @param int $order_id
 	 *
 	 * @return void

@@ -29,7 +29,7 @@ class Monri_WC_Gateway_Adapter_Webpay_Form {
 		$this->payment = $payment;
 
 		add_action( 'woocommerce_receipt_' . $this->payment->id, [ $this, 'process_redirect' ] );
-		add_action( 'woocommerce_before_thankyou', [ $this, 'process_return' ] );
+ 		add_action( 'template_redirect', [ $this, 'process_return_on_summary' ] );
 		add_action( 'woocommerce_order_status_changed', [ $this, 'process_capture' ], null, 4 );
 		add_action( 'woocommerce_order_status_changed', [ $this, 'process_void' ], null, 4 );
 
@@ -290,6 +290,29 @@ class Monri_WC_Gateway_Adapter_Webpay_Form {
 		$check_digest = hash( 'sha512', $this->payment->get_option( 'monri_merchant_key' ) . $calculated_url );
 
 		return hash_equals( $check_digest, $digest );
+	}
+
+	/**
+	 * Process return when landing on the order-received page.
+	 *
+	 * @return void
+	 */
+	public function process_return_on_summary() {
+		if ( ! is_wc_endpoint_url( 'order-received' ) ) {
+			return;
+		}
+
+		if ( empty( $_GET['order_number'] ) || empty( $_GET['digest'] ) ) {
+			return;
+		}
+
+		$order_id = sanitize_text_field( $_GET['order_number'] );
+
+		if ( $this->payment->get_option_bool( 'test_mode' ) ) {
+			$order_id = Monri_WC_Utils::resolve_real_order_id( $order_id );
+		}
+
+		$this->process_return( $order_id );
 	}
 
 	/**
