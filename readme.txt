@@ -45,6 +45,9 @@ https://github.com/MonriPayments/woocommerce-monri
 
 == Changelog ==
 
+= 3.8.4 - 2026-7-03 =
+* Fixed coding standards according to stricter new wp.org rules.
+
 = 3.8.3 - 2026-6-26 =
 * Improved payment processing on custom thank you page
 
