@@ -3,7 +3,7 @@ set -e
 
 MESSAGE=$1
 BASEDIR=$(dirname $(dirname "$0"))
-VERSION=$(cat version.php)
+VERSION=$(cat version.txt)
 
 if [ ! -d "release/monri-payments" ]; then
     echo "Missing release"

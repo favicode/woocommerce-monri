@@ -133,6 +133,7 @@ class Monri_WC_Gateway_Adapter_Wspay {
 		if ( $this->tokenization_enabled() && is_checkout() && is_user_logged_in() ) {
 
 			$use_token = null;
+			// phpcs:disable WordPress.Security.NonceVerification.Missing
 			if ( isset( $_POST['wc-monri-payment-token'] ) &&
 			     ! in_array( $_POST['wc-monri-payment-token'], [ 'not-selected', 'new', '' ], true )
 			) {
@@ -149,7 +150,7 @@ class Monri_WC_Gateway_Adapter_Wspay {
 
 			$new_token = isset( $_POST['wc-monri-new-payment-method'] ) &&
 			             in_array( $_POST['wc-monri-new-payment-method'], [ 'true', '1', 1 ], true );
-
+			// phpcs:enable WordPress.Security.NonceVerification.Missing
 			// paying with tokenized card
 			if ( $use_token ) {
 
@@ -270,7 +271,7 @@ class Monri_WC_Gateway_Adapter_Wspay {
 	 * @return void
 	 */
 	public function process_return( $order_id ) {
-
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended
 		if ( ! isset( $_GET['ShoppingCartID'] ) ) {
 			return;
 		}
@@ -279,7 +280,7 @@ class Monri_WC_Gateway_Adapter_Wspay {
 		if ( ! $order || $order->get_payment_method() !== $this->payment->id ) {
 			return;
 		}
-
+		// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r -- Logging stuff, this is needed.
 		Monri_WC_Logger::log( "Response data: " . sanitize_textarea_field( print_r( $_GET, true ) ), __METHOD__ );
 
 		$requested_order_id = sanitize_text_field( $_GET['ShoppingCartID'] );
@@ -345,7 +346,7 @@ class Monri_WC_Gateway_Adapter_Wspay {
 		} else {
 			$order->update_status( 'failed' );
 		}
-
+		// phpcs:enable WordPress.Security.NonceVerification.Recommended
 	}
 
 	/**
@@ -368,7 +369,7 @@ class Monri_WC_Gateway_Adapter_Wspay {
 	 * @return bool
 	 */
 	private function validate_return() {
-
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended
 		if ( ! isset( $_GET['ShoppingCartID'], $_GET['Signature'] ) ) {
 			return false;
 		}
@@ -377,7 +378,7 @@ class Monri_WC_Gateway_Adapter_Wspay {
 		$digest        = Monri_WC_Utils::sanitize_hash( $_GET['Signature'] );
 		$success       = ( isset( $_GET['Success'] ) && $_GET['Success'] === '1' ) ? '1' : '0';
 		$approval_code = isset( $_GET['ApprovalCode'] ) ? sanitize_text_field( $_GET['ApprovalCode'] ) : '';
-
+		// phpcs:enable WordPress.Security.NonceVerification.Recommended
 		$shop_id    = $this->shop_id;
 		$secret_key = $this->secret;
 

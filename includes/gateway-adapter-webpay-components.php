@@ -40,7 +40,7 @@ class Monri_WC_Gateway_Adapter_Webpay_Components {
 		add_action( 'template_redirect', function () {
 			if ( is_checkout() ) {
 				$script_url = $this->payment->get_option_bool( 'test_mode' ) ? self::SCRIPT_ENDPOINT_TEST : self::SCRIPT_ENDPOINT;
-				wp_enqueue_script( 'monri-components', $script_url, [], MONRI_WC_VERSION );
+				wp_enqueue_script( 'monri-components', $script_url, [], MONRI_WC_VERSION, false );
 			}
 		} );
 
@@ -107,6 +107,7 @@ class Monri_WC_Gateway_Adapter_Webpay_Components {
 		}
 
 		// Prevents rendering this file multiple times - JS part gets duplicated and executed twice
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Already checked by WC.
 		if ( isset( $_REQUEST['wc-ajax'] ) && $_REQUEST['wc-ajax'] === "update_order_review" ) {
 			wc_get_template( 'components.php', array(
 				'config'       => array(
@@ -142,10 +143,11 @@ class Monri_WC_Gateway_Adapter_Webpay_Components {
 	 */
 	public function process_payment( $order_id ) {
 
-		// monri-transaction is a json value, it is individually sanitized after decode
-		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		// monri-transaction is a JSON value, it is individually sanitized after decode
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.NonceVerification.Missing
 		$transaction = json_decode( wp_unslash( $_POST['monri-transaction'] ?? '{}' ), true );
 
+		// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r -- Logging stuff, this is needed.
 		Monri_WC_Logger::log( "Response data: " . sanitize_textarea_field( print_r( $transaction, true ) ), __METHOD__ );
 
 		if ( empty( $transaction ) ) {
@@ -503,13 +505,13 @@ class Monri_WC_Gateway_Adapter_Webpay_Components {
 	 * @return void
 	 */
 	public function after_checkout_validation( $data, $errors ) {
-
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Already checked by WC.
 		if ( empty( $_POST['monri_components_checkout_validation'] ) ) {
 			return;
 		}
 
 		if ( !empty( $data['woocommerce_checkout_update_totals'] ) && empty( $data['terms'] ) && ! empty( $data['terms-field'] ) ) {
-			$errors->add( 'terms', __( 'Please read and accept the terms and conditions to proceed with your order.', 'woocommerce' ) );
+			$errors->add( 'terms', __( 'Please read and accept the terms and conditions to proceed with your order.', 'monri' ) );
 		}
 	}
 	/**

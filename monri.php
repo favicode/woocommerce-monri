@@ -2,17 +2,18 @@
 /*
 Plugin Name: Monri Payments
 Description: Official Monri Payments gateway for WooCommerce
-Version: 3.8.3
+Version: 3.8.4
 Author: Monri Payments d.o.o.
 Author URI: https://monri.com
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 WC requires at least: 4.3.0
 WC tested up to: 10.8.1
+Text Domain: monri
 */
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'MONRI_WC_VERSION', '3.8.3' );
+define( 'MONRI_WC_VERSION', '3.8.4' );
 define( 'MONRI_WC_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'MONRI_WC_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'MONRI_WC_PLUGIN_INDEX', __FILE__ );
@@ -29,10 +30,11 @@ function monri_wc_init() {
 	require_once __DIR__ . '/includes/gateway.php';
 	require_once __DIR__ . '/includes/gateway-webpay-components-abstract.php';
 
-	function woocommerce_add_monri_gateway( $methods ) {
+	function monri_wc_add_monri_gateway( $methods ) {
 		$methods[] = Monri_WC_Gateway::class;
 
-		//temporary solution. Hide alternative payment methods settings in admin until the method is fully independent from components.
+		// Temporary solution. Hide alternative payment methods settings in admin until the method is fully independent of components.
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- This is not an ajax call, just checking which page we are on.
 		$is_wc_settings_page = is_admin() && isset( $_GET['page'] ) && $_GET['page'] === 'wc-settings';
 
 		if (Monri_WC_Settings::instance()->include_components_keks() && !$is_wc_settings_page) {
@@ -58,7 +60,7 @@ function monri_wc_init() {
 		return $methods;
 	}
 
-	add_filter( 'woocommerce_payment_gateways', 'woocommerce_add_monri_gateway' );
+	add_filter( 'woocommerce_payment_gateways', 'monri_wc_add_monri_gateway' );
 }
 add_action( 'plugins_loaded', 'monri_wc_init', 0 );
 
@@ -90,13 +92,6 @@ function monri_wc_action_links( $links ) {
 }
 add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'monri_wc_action_links' );
 
-
-function monri_load_language() {
-	load_plugin_textdomain( 'monri', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-}
-add_action( 'plugins_loaded', 'monri_load_language' );
-
-
 // Registers Blocks integration.
 function monri_wc_block_support() {
 	if ( class_exists( 'Automattic\WooCommerce\Blocks\Payments\Integrations\AbstractPaymentMethodType' ) ) {
@@ -106,7 +101,8 @@ function monri_wc_block_support() {
 			function ( Automattic\WooCommerce\Blocks\Payments\PaymentMethodRegistry $payment_method_registry ) {
 				$payment_method_registry->register( new Monri_WC_Blocks_Support() );
 
-				//temporary solution. Hide alternative payment methods settings in admin until the method is fully independent from components.
+				// Temporary solution. Hide alternative payment methods settings in admin until the method is fully independent of components.
+				// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- This is not an ajax call, just checking which page we are on.
 				$is_wc_settings_page = is_admin() && isset( $_GET['page'] ) && $_GET['page'] === 'wc-settings';
 				if (Monri_WC_Settings::instance()->include_components_keks() && !$is_wc_settings_page) {
 					require_once __DIR__ . '/includes/gateway-webpay-components-keks-pay.php';

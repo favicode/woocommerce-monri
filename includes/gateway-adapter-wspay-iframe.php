@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__ . '/gateway-adapter-wspay.php';
-
 class Monri_WC_Gateway_Adapter_Wspay_Iframe extends Monri_WC_Gateway_Adapter_Wspay {
 
 	/**
@@ -57,6 +55,7 @@ class Monri_WC_Gateway_Adapter_Wspay_Iframe extends Monri_WC_Gateway_Adapter_Wsp
 			$req = [];
 
 			// use token
+			// phpcs:disable WordPress.Security.NonceVerification.Missing -- Not ajax.
 			if ( isset( $_POST['wc-monri-payment-token'] ) &&
 			     ! in_array( $_POST['wc-monri-payment-token'], [ 'not-selected', 'new', '' ], true )
 			) {
@@ -74,6 +73,7 @@ class Monri_WC_Gateway_Adapter_Wspay_Iframe extends Monri_WC_Gateway_Adapter_Wsp
 			) {
 				$req['use_token'] = -1;
 			}
+			// phpcs:enable WordPress.Security.NonceVerification.Missing
 
 			// add params to query
 			if ( $req ) {
@@ -112,13 +112,13 @@ class Monri_WC_Gateway_Adapter_Wspay_Iframe extends Monri_WC_Gateway_Adapter_Wsp
 		}
 
 		if ( $this->tokenization_enabled() && is_checkout() && is_user_logged_in() ) {
-
+			// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Not ajax.
 			if ( isset( $_GET['use_token'] ) && $_GET['use_token'] === '-1' ) {
 				$req['IsTokenRequest'] = '1';
 			} elseif ( isset( $_GET['use_token'] ) && is_numeric( $_GET['use_token'] ) ) {
 				$token_id = sanitize_text_field( $_GET['use_token'] );
 				$tokens   = $this->payment->get_tokens();
-
+				// phpcs:enable WordPress.Security.NonceVerification.Recommended
 				// redirect to cart with error?? should never happen
 				if ( ! isset( $tokens[ $token_id ] ) ) {
 					echo esc_html( __( 'Token does not exist.', 'monri' ) );
@@ -169,7 +169,7 @@ class Monri_WC_Gateway_Adapter_Wspay_Iframe extends Monri_WC_Gateway_Adapter_Wsp
 
 		$order->add_meta_data( 'monri_wspay_transaction_type', $this->payment->get_option_bool( 'transaction_type' ) ? 'authorize' : 'purchase' );
 		$order->save_meta_data();
-
+		// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r -- Logging stuff, this is needed.
 		Monri_WC_Logger::log( 'Request data: ' . print_r( $req, true ), __METHOD__ );
 
 		wc_get_template( 'iframe-form.php', [
